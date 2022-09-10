@@ -31,9 +31,13 @@ public class SmsService {
 	public void sendSms(Long id) {
 		
 		Sale sale = repository.findById(id).get();
+//		String msg = "O vendedor " + sale.getSellerName() +
+//				" foi destaque em " + sale.getDate().getMonthValue() + "/" + sale.getDate().getYear() +
+//				" com um total de R$ " + String.format("%.2f", sale.getAmount());
+		
 		String msg = "O vendedor " + sale.getSellerName() +
 				" foi destaque em " + sale.getDate().getMonthValue() + "/" + sale.getDate().getYear() +
-				" com um total de R$ " + String.format("%.2f", sale.getAmount());
+				" com um total de R$ " + sale.getAmount();
 
 		Twilio.init(twilioSid, twilioKey);
 
